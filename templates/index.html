@@ -18,13 +18,46 @@
       </div>
   
       <!-- Mars Data -->
-      <div class="row" id="craiglist-listings">
+      <div class="row" id="nasa_news">
         <div class="col-md-12">
-          <h4 class="heading">{{listings.price}} {{listings.headline}}</h4>
-          <small>{{listings.hood}}</small>
+          <h2 class="heading">{{nasa_title}}</h2>
+          <h4>{{nasa_paragraph}}</h4>
         </div>
       </div>
-  
+
+      <div class="row" id="mars_image">
+          <div class="col-md-6">
+              <h2>Featured Mars Image</h2>
+              <img id="image" src="{{mars_image}}" style="max-width:100%; max-height: auto;" alt="mars image">
+          </div>
+      </div>
+
+      <div class="row" id="twitter">
+          <div class="col-md-12">
+              <h2>Current Mars Weather</h2>
+              <h4>{{mars_weather}}</h4>
+          </div>
+      </div>
+
+      <div class="row" id="space_facts">
+          <div class="col-md-12">
+              <h2>Facts about Mars</h2>
+              <table>{{final_mars_table}}</table>
+          </div>
+      </div>
+
+      <div class="row" id="hemisphere">
+          <div class="col-md-6">
+              <h2>Mars Hemispheres</h2>
+              {% for item in hemisphere_img_urls%}
+              <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                  <p class="card-text">Mars Hemispheres: {{ item.title}}</p>
+
+
+          </div>
+      </div>
+
     </div>
   </body>
   

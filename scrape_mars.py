@@ -24,14 +24,14 @@ def scrape_info():
     nasa_soup = bs(html, 'html.parser')
 
   #scrape news title
-    nasa_soup.find("div",class_="content_title").text
-
-    nasa_title = "Mars Now"
+    nasa_title = nasa_soup.find("div",class_="content_title").text
+    nasa_title
+    
 
   #scrape paragraph
-    nasa_soup.find("div", class_="article_teaser_body").text
+    nasa_paragraph = nasa_soup.find("div", class_="article_teaser_body").text
 
-    nasa_paragraph = 'As a longtime fan of space exploration, Vaneeza Rupani appreciates the creativity and collaboration involved with trying to fly on another planet.'
+    nasa_paragraph
 
   #JPL Mars Space Images
     image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
@@ -53,10 +53,8 @@ def scrape_info():
     img_url_rel = img_soup.select_one('figure.lede a img').get("src")
     img_url_rel
 
-    img_url = f'https://jpl.nasa.gov{img_url_rel}'
-    img_url
-
-    mars_image = 'https://jpl.nasa.gov/spaceimages/images/largesize/PIA18432_hires.jpg'
+    mars_image = f'https://jpl.nasa.gov{img_url_rel}'
+    mars_image 
 
 
 #twitter weather
@@ -70,10 +68,9 @@ def scrape_info():
 
     soup_weather = bs(twitter_weather, 'html.parser')
 
-    soup_weather.find("div", class_="css-1dbjc4n")
+    mars_weather = soup_weather.find("div", class_="css-1dbjc4n")
 
-    mars_weather = "InSight sol 503 (2020-04-26) low -93.8ºC (-136.8ºF) high -4.9ºC (23.2ºF),winds from the WNW at 4.6 m/s (10.2 mph) gusting to 17.5 m/s (39.1 mph),pressure at 6.70"
-
+    mars_weather 
 #mars facts dataframe
     facts_url = "https://space-facts.com/mars/"
 
@@ -122,7 +119,7 @@ def scrape_info():
        h3 = x.find('h3').text
        image_url = x.find('a', class_='itemLink product-item')['href']
     
-       image_soup = bs(image_url, 'html.parser')
+       #image_soup = bs(image_url, 'html.parser')
     
        full_url = f'https://astrogeology.usgs.gov{image_url}'
     
@@ -132,10 +129,4 @@ def scrape_info():
 
     hemisphere_img_urls
 
-    hemisphere_image_urls = [
-     {"title": 'Valles Marineris Hemisphere Enhanced','image_url': 'https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg'},
-     {"title": 'Cerberus Hemisphere Enhanced','image_url': 'https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg'},
-     {'title': 'Syrtis Major Hemisphere Enhanced', 'image_url': 'https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg'},
-     {'title': 'Valles Marineris Hemisphere Enhanced','image_url': 'https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg'}
-    ]
     return mars_data   
